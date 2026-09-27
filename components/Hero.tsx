@@ -110,22 +110,22 @@ export default function Hero() {
         )
         .to(
           indexRef.current,
-          { opacity: 0.35, duration: 2, ease: "power2.out" },
+          { opacity: 1, duration: 2, ease: "power2.out" },
           "-=1.6",
         )
         .to(
           supportingRef.current,
-          { opacity: 0.55, duration: 2, ease: "power2.out" },
+          { opacity: 1, duration: 2, ease: "power2.out" },
           "-=1.2",
         )
         .to(
           priceRef.current,
-          { opacity: 0.4, duration: 1.4, ease: "power2.out" },
+          { opacity: 1, duration: 1.4, ease: "power2.out" },
           "-=1.0",
         )
         .to(
           scrollRef.current,
-          { opacity: 0.35, duration: 1.4, ease: "power2.out" },
+          { opacity: 1, duration: 1.4, ease: "power2.out" },
           "-=0.6",
         );
 
@@ -173,7 +173,7 @@ export default function Hero() {
         .to(line1Ref.current, { x: 0, duration: 0.28, ease: "none" }, 0.62)
         .to(line2Ref.current, { x: 0, duration: 0.28, ease: "none" }, 0.62)
         .to(productStage, { scale: 1, duration: 0.28, ease: "none" }, 0.62)
-        .to(supportingRef.current, { opacity: 0.7, duration: 0.2, ease: "none" }, 0.85);
+        .to(supportingRef.current, { opacity: 1, duration: 0.2, ease: "none" }, 0.85);
 
       /* ── Mouse parallax: physical depth response ── */
       mm.add("(pointer: fine)", () => {
@@ -246,7 +246,7 @@ export default function Hero() {
           {/* Index marker — gallery notation */}
           <p
             ref={indexRef}
-            className="absolute left-6 top-28 font-sans text-[9px] uppercase tracking-[0.4em] text-ivory-faint md:left-10 md:top-32 lg:left-14"
+            className="absolute left-6 top-28 font-sans text-[9px] uppercase tracking-[0.4em] text-ivory/55 md:left-10 md:top-32 lg:left-14"
           >
             01 / HUG
           </p>
@@ -362,8 +362,12 @@ export default function Hero() {
           {/* Supporting copy — unconventionally placed */}
           <p
             ref={supportingRef}
-            className="absolute bottom-[7vh] left-6 z-30 max-w-[168px] font-sans text-[11px] font-light leading-[1.85] tracking-[0.04em] text-ivory-muted md:bottom-[16vh] md:left-[34vw] md:max-w-[220px] lg:bottom-[15vh] lg:left-[38vw] lg:max-w-[240px] lg:text-[12px]"
+            className="absolute bottom-[7vh] left-6 z-30 max-w-[168px] font-sans text-[11px] font-light leading-[1.85] tracking-[0.04em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.55),0_8px_24px_rgba(10,9,8,0.45)] md:bottom-[16vh] md:left-[34vw] md:max-w-[220px] lg:bottom-[15vh] lg:left-[38vw] lg:max-w-[240px] lg:text-[12px]"
           >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-8 -inset-y-5 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,9,8,0.42)_0%,rgba(10,9,8,0.16)_46%,rgba(10,9,8,0)_76%)]"
+            />
             Memorial sculptures designed around the relationships we never want
             to lose.
           </p>
@@ -371,7 +375,7 @@ export default function Hero() {
           {/* Price */}
           <p
             ref={priceRef}
-            className="absolute bottom-[3.5vh] right-6 z-30 font-sans text-[9px] font-light tracking-[0.12em] text-ivory-faint md:bottom-[10vh] md:right-[6vw] lg:right-[8vw]"
+            className="absolute bottom-[6vh] right-6 z-30 font-sans text-[9px] font-light tracking-[0.12em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.45)] md:bottom-[1.2vh] lg:bottom-[10vh] lg:right-[calc(11vw+34.4vh+1.25rem)]"
           >
             Expected price: £895 per pair
           </p>
@@ -381,7 +385,7 @@ export default function Hero() {
             ref={scrollRef}
             className="absolute bottom-8 left-1/2 z-30 -translate-x-1/2 md:bottom-10"
           >
-            <p className="font-sans text-[8px] uppercase tracking-[0.45em] text-ivory-faint">
+            <p className="font-sans text-[8px] uppercase tracking-[0.45em] text-ivory/60">
               Scroll
             </p>
           </div>
