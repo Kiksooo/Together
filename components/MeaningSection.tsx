@@ -70,12 +70,12 @@ export default function MeaningSection() {
           id="meaning-heading"
           className="mt-[10vh] max-w-[100%] font-serif text-[clamp(2.15rem,9vw,2.85rem)] font-light leading-[0.9] tracking-[-0.035em] text-ivory md:mt-[11vh] md:text-[clamp(4.1rem,8.8vw,8.75rem)]"
         >
-          <span className="block overflow-hidden pb-[0.08em]">
+          <span className="block overflow-hidden pb-[0.18em]">
             <span ref={line1Ref} className="block will-change-transform">
               For the relationships
             </span>
           </span>
-          <span className="ml-[8vw] -mt-[0.02em] block overflow-hidden pb-[0.14em] md:ml-[7vw]">
+          <span className="ml-[8vw] -mt-[0.02em] block overflow-hidden pb-[0.2em] md:ml-[7vw]">
             <span ref={line2Ref} className="block will-change-transform">
               we never want to lose.
             </span>

@@ -109,12 +109,12 @@ export default function BelongSection() {
           ref={headlineRef}
           className="mt-[15vh] font-serif text-[clamp(2.4rem,11vw,7.6rem)] font-light leading-[0.9] tracking-[-0.045em] text-ivory will-change-transform md:mt-[16vh] md:pl-[4vw] lg:pl-[5vw]"
         >
-          <span className="block overflow-hidden pb-[0.08em]">
+          <span className="block overflow-hidden pb-[0.18em]">
             <span ref={line1Ref} className="block">
               Made for the places
             </span>
           </span>
-          <span className="-mt-[0.06em] block overflow-hidden pb-[0.1em]">
+          <span className="-mt-[0.06em] block overflow-hidden pb-[0.2em]">
             <span ref={line2Ref} className="block">
               where life continues.
             </span>

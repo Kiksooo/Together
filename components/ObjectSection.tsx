@@ -96,12 +96,12 @@ export default function ObjectSection() {
           id="object-heading"
           className="mt-[8vh] max-w-[100%] font-serif text-[clamp(2.05rem,8.4vw,2.65rem)] font-light leading-[0.92] tracking-[-0.035em] text-ivory md:mt-[9vh] md:text-[clamp(3.5rem,6.4vw,6.6rem)]"
         >
-          <span className="block overflow-hidden pb-[0.08em]">
+          <span className="block overflow-hidden pb-[0.18em]">
             <span ref={line1Ref} className="block will-change-transform">
               Designed as a memorial.
             </span>
           </span>
-          <span className="ml-[6vw] -mt-[0.02em] block overflow-hidden pb-[0.12em] md:ml-[10vw]">
+          <span className="ml-[6vw] -mt-[0.02em] block overflow-hidden pb-[0.2em] md:ml-[10vw]">
             <span ref={line2Ref} className="block will-change-transform">
               Considered as an object.
             </span>

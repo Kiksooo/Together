@@ -10,7 +10,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bg-stone text-ink-muted">
+    <footer data-surface="stone" className="bg-stone text-ink-muted">
       <div className="mx-auto flex max-w-[100vw] flex-col px-6 pt-1 pb-8 md:px-[8vw] md:pb-10">
         <p className="font-sans text-[9px] font-light tracking-[0.16em]">
           TOGETHER
@@ -18,7 +18,7 @@ export default function Footer() {
 
         <nav
           aria-label="Footer"
-          className="mt-4 flex flex-row flex-nowrap items-baseline gap-x-4 sm:gap-x-6 md:mt-5 md:gap-x-8"
+          className="mt-4 flex flex-row flex-nowrap items-baseline gap-x-3 sm:gap-x-6 md:mt-5 md:gap-x-8"
         >
           {links.map((link) => (
             <Link

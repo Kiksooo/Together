@@ -50,8 +50,8 @@ export default function Hero() {
       gsap.set(left, { opacity: 0, x: 0, scale: 0.97 });
       gsap.set(right, { opacity: 0, x: 0, scale: 0.97 });
       gsap.set(assembled, { opacity: 0, scale: 1.06, filter: "brightness(0.15)" });
-      gsap.set(line1Ref.current, { opacity: 0, x: -60 });
-      gsap.set(line2Ref.current, { opacity: 0, x: 60 });
+      gsap.set(line1Ref.current, { opacity: 0, y: 16 });
+      gsap.set(line2Ref.current, { opacity: 0, y: 16 });
       gsap.set(supportingRef.current, { opacity: 0 });
       gsap.set(priceRef.current, { opacity: 0 });
       gsap.set(scrollRef.current, { opacity: 0 });
@@ -100,12 +100,12 @@ export default function Hero() {
         )
         .to(
           line1Ref.current,
-          { opacity: 1, x: 0, duration: 2.4, ease: EASE.physical },
+          { opacity: 1, y: 0, duration: 2.4, ease: EASE.physical },
           "-=2.0",
         )
         .to(
           line2Ref.current,
-          { opacity: 1, x: 0, duration: 2.4, ease: EASE.physical },
+          { opacity: 1, y: 0, duration: 2.4, ease: EASE.physical },
           "-=1.8",
         )
         .to(
@@ -142,8 +142,6 @@ export default function Hero() {
       scrollTl
         .to(left, { x: "-4%", duration: 0.35, ease: "none" }, 0.12)
         .to(right, { x: "4%", duration: 0.35, ease: "none" }, 0.12)
-        .to(line1Ref.current, { x: "-4%", duration: 0.35, ease: "none" }, 0.18)
-        .to(line2Ref.current, { x: "5%", duration: 0.35, ease: "none" }, 0.18)
         .to(
           productStage,
           { scale: 0.98, duration: 0.45, ease: "none" },
@@ -170,8 +168,6 @@ export default function Hero() {
           },
           0.62,
         )
-        .to(line1Ref.current, { x: 0, duration: 0.28, ease: "none" }, 0.62)
-        .to(line2Ref.current, { x: 0, duration: 0.28, ease: "none" }, 0.62)
         .to(productStage, { scale: 1, duration: 0.28, ease: "none" }, 0.62)
         .to(supportingRef.current, { opacity: 1, duration: 0.2, ease: "none" }, 0.85);
 
@@ -216,10 +212,10 @@ export default function Hero() {
 
           productTween(nx * 28);
           productYTween(ny * 18);
-          line1XTween(nx * -14);
-          line1YTween(ny * -8);
-          line2XTween(nx * 14);
-          line2YTween(ny * 8);
+          line1XTween(nx * -6);
+          line1YTween(ny * -4);
+          line2XTween(nx * 6);
+          line2YTween(ny * 4);
         };
 
         stage.addEventListener("mousemove", onMove);
@@ -251,17 +247,17 @@ export default function Hero() {
             01 / HUG
           </p>
 
-          {/* Headline — split, overlapping composition */}
-          <h1 className="pointer-events-none absolute inset-0 z-20 select-none">
+          {/* Headline — split, but stacked so the lines can scale without colliding */}
+          <h1 className="pointer-events-none absolute inset-x-0 top-[max(8.75rem,15vh)] z-20 px-6 select-none md:top-[max(9.5rem,13vh)] md:px-10 lg:pl-14 lg:pr-[calc(11vw+34.4vh+2rem)]">
             <span
               ref={line1Ref}
-              className="absolute left-[6vw] top-[16vh] font-serif text-[clamp(3.5rem,11vw,10.5rem)] font-light leading-[0.9] tracking-[-0.03em] text-ivory md:top-[12vh] lg:left-[7vw] lg:top-[13vh]"
+              className="block w-fit max-w-full font-serif text-[clamp(2.6rem,9vw,8.75rem)] font-light leading-[0.92] tracking-[-0.03em] text-ivory"
             >
               Two lives.
             </span>
             <span
               ref={line2Ref}
-              className="absolute right-[6vw] top-[28vh] font-serif text-[clamp(3rem,9vw,8.5rem)] font-light leading-[0.92] tracking-[-0.03em] text-ivory/90 md:right-[10vw] md:top-[27vh] lg:right-[12vw] lg:top-[30vh]"
+              className="ml-auto mt-[0.14em] block w-fit max-w-full text-right font-serif text-[clamp(1.85rem,4.7vw,5rem)] font-light leading-[0.92] tracking-[-0.03em] text-ivory/90"
             >
               One connection.
             </span>
@@ -362,7 +358,7 @@ export default function Hero() {
           {/* Supporting copy — unconventionally placed */}
           <p
             ref={supportingRef}
-            className="absolute bottom-[7vh] left-6 z-30 max-w-[168px] font-sans text-[11px] font-light leading-[1.85] tracking-[0.04em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.55),0_8px_24px_rgba(10,9,8,0.45)] md:bottom-[16vh] md:left-[34vw] md:max-w-[220px] lg:bottom-[15vh] lg:left-[38vw] lg:max-w-[240px] lg:text-[12px]"
+            className="absolute bottom-[3.8rem] left-6 right-6 z-30 max-w-none font-sans text-[11px] font-light leading-[1.85] tracking-[0.04em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.55),0_8px_24px_rgba(10,9,8,0.45)] md:bottom-auto md:top-[30vh] md:left-10 md:right-auto md:max-w-[260px] lg:top-auto lg:bottom-[15vh] lg:left-[38vw] lg:max-w-[240px] lg:text-[12px]"
           >
             <span
               aria-hidden="true"
@@ -375,7 +371,7 @@ export default function Hero() {
           {/* Price */}
           <p
             ref={priceRef}
-            className="absolute bottom-[6vh] right-6 z-30 font-sans text-[9px] font-light tracking-[0.12em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.45)] md:bottom-[1.2vh] lg:bottom-[10vh] lg:right-[calc(11vw+34.4vh+1.25rem)]"
+            className="absolute bottom-[2.1rem] left-6 z-30 whitespace-nowrap font-sans text-[9px] font-light tracking-[0.12em] text-ivory [text-shadow:0_1px_1px_rgba(10,9,8,0.45)] md:bottom-[1.2vh] md:left-auto md:right-6 lg:bottom-[10vh] lg:right-[calc(11vw+34.4vh+1.25rem)]"
           >
             Expected price: £895 per pair
           </p>
@@ -383,7 +379,7 @@ export default function Hero() {
           {/* Scroll cue */}
           <div
             ref={scrollRef}
-            className="absolute bottom-8 left-1/2 z-30 -translate-x-1/2 md:bottom-10"
+            className="absolute bottom-2 left-1/2 z-30 -translate-x-1/2 md:bottom-10"
           >
             <p className="font-sans text-[8px] uppercase tracking-[0.45em] text-ivory/60">
               Scroll

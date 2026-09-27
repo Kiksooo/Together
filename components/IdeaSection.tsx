@@ -53,6 +53,7 @@ export default function IdeaSection() {
       id="idea"
       ref={sectionRef}
       aria-labelledby="idea-heading"
+      data-surface="stone"
       className="idea-section relative overflow-hidden bg-stone text-ink"
     >
       <div className="relative mx-auto flex min-h-[100svh] max-w-[100vw] flex-col justify-center px-6 py-[18vh] md:px-[8vw] md:py-[22vh] lg:py-[24vh]">

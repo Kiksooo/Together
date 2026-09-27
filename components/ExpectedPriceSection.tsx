@@ -92,6 +92,7 @@ export default function ExpectedPriceSection() {
     <section
       ref={sectionRef}
       aria-labelledby="price-heading"
+      data-surface="stone"
       className="relative overflow-x-hidden bg-stone text-ink"
     >
       <div className="relative mx-auto flex min-h-[75svh] max-w-[100vw] flex-col justify-center px-6 py-[18vh] md:px-[8vw] md:py-[22vh]">

@@ -26,16 +26,41 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const updateTone = () => {
+      const stack = document.elementsFromPoint(
+        Math.min(32, window.innerWidth / 2),
+        16,
+      );
+      const under = stack.find((node) => !header.contains(node));
+      const surface = under
+        ?.closest("[data-surface]")
+        ?.getAttribute("data-surface");
+      header.dataset.tone = surface === "stone" ? "ink" : "ivory";
+    };
+
+    updateTone();
+    window.addEventListener("scroll", updateTone, { passive: true });
+    window.addEventListener("resize", updateTone);
+    return () => {
+      window.removeEventListener("scroll", updateTone);
+      window.removeEventListener("resize", updateTone);
+    };
+  }, []);
+
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 opacity-0"
+      className="fixed inset-x-0 top-0 z-50 text-ivory opacity-0 data-[tone=ink]:text-ink"
       aria-label="Site header"
     >
       <div className="mx-auto flex items-center justify-between px-6 py-7 md:px-10 md:py-8 lg:px-14">
         <a
           href="#"
-          className="font-sans text-[10px] font-normal uppercase tracking-[0.32em] text-ivory transition-opacity duration-700 hover:opacity-50"
+          className="font-sans text-[10px] font-normal uppercase tracking-[0.32em] text-current transition-opacity duration-700 hover:opacity-50"
           aria-label="TOGETHER home"
         >
           TOGETHER
@@ -47,11 +72,11 @@ export default function Header() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="group relative font-sans text-[9px] font-normal uppercase tracking-[0.22em] text-ivory/60 transition-opacity duration-700 hover:opacity-50 sm:text-[10px] md:tracking-[0.28em]"
+                  className="group relative font-sans text-[9px] font-normal uppercase tracking-[0.22em] text-current/60 transition-opacity duration-700 hover:opacity-50 sm:text-[10px] md:tracking-[0.28em]"
                 >
                   {link.label}
                   <span
-                    className="absolute -bottom-1.5 left-0 h-px w-0 bg-ivory transition-all duration-700 ease-out group-hover:w-full"
+                    className="absolute -bottom-1.5 left-0 h-px w-0 bg-current transition-all duration-700 ease-out group-hover:w-full"
                     aria-hidden="true"
                   />
                 </a>

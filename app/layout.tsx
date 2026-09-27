@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import SmoothScroll from "@/components/SmoothScroll";
+import YandexMetrika from "@/components/YandexMetrika";
 import { organizationJsonLd, pageMetadata } from "@/lib/site";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable}`}
     >
       <body className="font-sans antialiased">
+        <YandexMetrika />
         <JsonLd data={organizationJsonLd()} />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
