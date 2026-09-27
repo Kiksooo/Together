@@ -179,11 +179,11 @@ export default function HugExperience() {
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex flex-col items-center px-6 pb-[8vh] text-center md:pb-[10vh]">
           <h2 ref={joinedRef} className="opacity-0">
-            <span className="block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory">
-              TWO LIVES.
+            <span className="block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light uppercase leading-[1.15] tracking-[0.08em] text-ivory">
+              Two vessels.
             </span>
-            <span className="mt-1 block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory/80">
-              ONE CONNECTION.
+            <span className="mt-1 block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light uppercase leading-[1.15] tracking-[0.08em] text-ivory/80">
+              One connection.
             </span>
           </h2>
           <p
