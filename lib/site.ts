@@ -12,7 +12,7 @@ const hugImage = {
   url: "/images/hug-assembled.png",
   width: 630,
   height: 1024,
-  alt: "HUG — two sculptural memorial vessels forming one composition",
+  alt: "The two HUG vessels together, forming one composition.",
 } as const;
 
 export function organizationJsonLd() {
@@ -33,20 +33,13 @@ export function hugProductJsonLd() {
     "@type": "Product",
     name: "HUG",
     description:
-      "HUG is a contemporary memorial sculpture designed for two. Two individual cremation vessels come together to form one sculptural object of remembrance. It is in development and pre-launch.",
+      "HUG is a contemporary memorial sculpture for two. Two individual cremation vessels come together as one object of remembrance. It is in development and pre-launch. The expected retail price is £895 per pair.",
     brand: {
       "@type": "Brand",
       name: "TOGETHER",
     },
-    material: "High-fired porcelain",
-    category: "Contemporary memorial sculpture",
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "GBP",
-      price: "895",
-      availability: "https://schema.org/PreOrder",
-      ...(url ? { url: `${url}/hug` } : {}),
-    },
+    category: "Memorial sculpture",
+    ...(url ? { url: `${url}/hug` } : {}),
   };
 }
 
@@ -56,22 +49,25 @@ export function pageMetadata(
   path: string,
 ): Metadata {
   const base = configuredSiteUrl();
+  const canonical = base ? `${base}${path}` : path;
   return {
     title,
     description: pageDescription,
     ...(base ? { metadataBase: new URL(base) } : {}),
-    alternates: { canonical: path },
+    alternates: { canonical },
+    robots: { index: true, follow: true },
     openGraph: {
       title,
       description: pageDescription,
       type: "website",
       siteName: "TOGETHER",
-      ...(base
-        ? {
-            url: `${base}${path}`,
-            images: [{ ...hugImage, url: `${base}/images/hug-assembled.png` }],
-          }
-        : {}),
+      url: canonical,
+      images: [
+        {
+          ...hugImage,
+          url: base ? `${base}${hugImage.url}` : hugImage.url,
+        },
+      ],
     },
   };
 }
@@ -114,7 +110,7 @@ export const hugFaqs = [
   {
     question: "Is HUG available now?",
     answer:
-      "HUG is currently in development and pre-launch. Visitors can register their interest through the pre-order CTA on the website.",
+      "HUG is currently in development and pre-launch. Visitors can register their interest through the pre-order on the website.",
   },
   {
     question: "Where is HUG made?",

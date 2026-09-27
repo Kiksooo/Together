@@ -29,7 +29,9 @@ export function EditorialPage({
         <h1 className="mt-8 max-w-[12em] font-serif text-[clamp(2.35rem,6.2vw,4.6rem)] font-light leading-[0.94] tracking-[-0.035em] text-ink md:mt-12 md:max-w-[14em]">
           {title}
         </h1>
-        <div className="mt-14 max-w-[40rem] md:mt-20">{children}</div>
+        <div className="mt-14 max-w-[40rem] md:mt-20 [&>section:first-child]:mt-0">
+          {children}
+        </div>
       </main>
 
       <Footer />
@@ -45,18 +47,23 @@ export function Paragraph({ children }: { children: React.ReactNode }) {
   );
 }
 
+const chapterHeadingClass =
+  "max-w-[22ch] font-serif text-[clamp(1.65rem,3vw,2.3rem)] font-light leading-[1.15] tracking-[-0.03em] text-ink";
+
 export function Chapter({
   title,
+  level = 2,
   children,
 }: {
   title: string;
+  level?: 2 | 3;
   children: React.ReactNode;
 }) {
+  const Heading = level === 3 ? "h3" : "h2";
+
   return (
     <section className="mt-20 md:mt-28">
-      <h2 className="max-w-[22ch] font-serif text-[clamp(1.65rem,3vw,2.3rem)] font-light leading-[1.15] tracking-[-0.03em] text-ink">
-        {title}
-      </h2>
+      <Heading className={chapterHeadingClass}>{title}</Heading>
       <div className="mt-6">{children}</div>
     </section>
   );

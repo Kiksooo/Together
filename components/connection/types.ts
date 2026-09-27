@@ -12,18 +12,18 @@ export const SCULPTURE_ASSETS = {
     id: "left",
     kind: "image",
     src: "/images/hug-left.png",
-    alt: "HUG left memorial vessel — complete on its own",
+    alt: "The left HUG vessel, a pale sculptural form on its own.",
   },
   right: {
     id: "right",
     kind: "image",
     src: "/images/hug-right.png",
-    alt: "HUG right memorial vessel — complete on its own",
+    alt: "The right HUG vessel, a pale sculptural form on its own.",
   },
   assembled: {
     id: "assembled",
     kind: "image",
     src: "/images/hug-assembled.png",
-    alt: "HUG assembled — two vessels forming one sculptural composition",
+    alt: "The two HUG vessels together, forming one composition.",
   },
 } as const satisfies Record<string, SculptureAsset>;

@@ -19,7 +19,7 @@ const labelClass =
 export default function ExpectedPriceSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const priceRef = useRef<HTMLParagraphElement>(null);
-  const supportingRef = useRef<HTMLParagraphElement>(null);
+  const supportingRef = useRef<HTMLHeadingElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState<Step>("invite");
   const [pending, setPending] = useState(false);
@@ -90,26 +90,27 @@ export default function ExpectedPriceSection() {
 
   return (
     <section
+      id="price-heading"
       ref={sectionRef}
-      aria-labelledby="price-heading"
+      aria-labelledby="expected-price"
       data-surface="stone"
       className="relative overflow-x-hidden bg-stone text-ink"
     >
       <div className="relative mx-auto flex min-h-[75svh] max-w-[100vw] flex-col justify-center px-6 py-[18vh] md:px-[8vw] md:py-[22vh]">
         <p
-          id="price-heading"
           ref={priceRef}
           className="font-serif text-[clamp(4rem,14vw,9rem)] font-light leading-[0.9] tracking-[-0.04em] text-ink"
         >
           £895
         </p>
 
-        <p
+        <h2
+          id="expected-price"
           ref={supportingRef}
           className="mt-8 max-w-[280px] font-sans text-[11px] font-light leading-[1.9] tracking-[0.05em] text-ink-muted md:mt-10 md:text-[12px]"
         >
           Expected retail price: £895 per pair.
-        </p>
+        </h2>
 
         <p className="mt-6 font-sans text-[9px] uppercase tracking-[0.42em] text-ink-faint md:mt-7 md:text-[10px]">
           MADE IN JAPAN

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SCULPTURE_ASSETS } from "@/components/connection/types";
 import { EASE, prefersReducedMotion } from "@/lib/animations";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -317,7 +318,7 @@ export default function Hero() {
               >
                 <Image
                   src="/images/hug-left.png"
-                  alt="HUG left memorial vessel"
+                  alt={SCULPTURE_ASSETS.left.alt}
                   fill
                   priority
                   sizes="(max-width: 768px) 46vw, 28vw"
@@ -330,7 +331,7 @@ export default function Hero() {
               <div className="relative h-full w-full">
                 <Image
                   src="/images/hug-right.png"
-                  alt="HUG right memorial vessel"
+                  alt={SCULPTURE_ASSETS.right.alt}
                   fill
                   priority
                   sizes="(max-width: 768px) 58vw, 34vw"
@@ -346,7 +347,7 @@ export default function Hero() {
               <div className="relative h-[68vh] w-[min(78vw,640px)]">
                 <Image
                   src="/images/hug-assembled.png"
-                  alt="HUG — two sculptural memorial vessels forming one composition"
+                  alt={SCULPTURE_ASSETS.assembled.alt}
                   fill
                   sizes="(max-width: 768px) 78vw, 640px"
                   className="object-contain"

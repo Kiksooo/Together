@@ -8,8 +8,8 @@ import {
 import { hugFaqJsonLd, hugFaqs, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata(
-  "HUG FAQ | Contemporary Memorial Urn for Two | TOGETHER",
-  "Find answers about HUG, the TOGETHER memorial sculpture, including its design, two individual vessels, materials, development status and expected price.",
+  "FAQ | TOGETHER",
+  "Answers about HUG: what it is, how the two vessels work, materials, where it is made, and the expected price.",
   "/faq",
 );
 
@@ -32,8 +32,9 @@ function Answer({
 
 export default function FaqPage() {
   return (
-    <EditorialPage eyebrow="FAQ" title="Questions about HUG.">
+    <EditorialPage eyebrow="FAQ" title="Frequently Asked Questions">
       <JsonLd data={hugFaqJsonLd} />
+      <Paragraph>Questions about HUG.</Paragraph>
 
       <Answer question={hugFaqs[0].question}>
         <Paragraph>
@@ -82,7 +83,7 @@ export default function FaqPage() {
         <Paragraph>
           HUG is currently in development and pre-launch. Visitors can register
           their interest through the{" "}
-          <TextLink href="/#price-heading">pre-order CTA</TextLink> on the
+          <TextLink href="/#price-heading">pre-order</TextLink> on the
           website.
         </Paragraph>
       </Answer>

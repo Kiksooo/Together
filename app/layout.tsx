@@ -21,8 +21,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = pageMetadata(
-  "TOGETHER — HUG",
-  "Memorial sculptures designed around the relationships we never want to lose.",
+  "TOGETHER — Memorial Sculptures for Two",
+  "TOGETHER makes memorial sculptures for two. HUG is a pair of vessels that come together as one object of remembrance.",
   "/",
 );
 

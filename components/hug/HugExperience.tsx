@@ -19,7 +19,7 @@ export default function HugExperience() {
   const assembledRef = useRef<HTMLDivElement>(null);
   const apartLabelRef = useRef<HTMLParagraphElement>(null);
   const apartCopyRef = useRef<HTMLParagraphElement>(null);
-  const joinedRef = useRef<HTMLDivElement>(null);
+  const joinedRef = useRef<HTMLHeadingElement>(null);
   const finalRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -178,14 +178,14 @@ export default function HugExperience() {
         </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex flex-col items-center px-6 pb-[8vh] text-center md:pb-[10vh]">
-          <div ref={joinedRef} className="opacity-0">
-            <p className="font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory">
+          <h2 ref={joinedRef} className="opacity-0">
+            <span className="block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory">
               TWO LIVES.
-            </p>
-            <p className="mt-1 font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory/80">
+            </span>
+            <span className="mt-1 block font-serif text-[clamp(1.35rem,2.6vw,2.15rem)] font-light leading-[1.15] tracking-[0.08em] text-ivory/80">
               ONE CONNECTION.
-            </p>
-          </div>
+            </span>
+          </h2>
           <p
             ref={finalRef}
             className="mt-5 max-w-[280px] font-sans text-[11px] font-light leading-[1.85] tracking-[0.04em] text-ivory-muted opacity-0 md:text-[12px]"
