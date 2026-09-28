@@ -11,9 +11,14 @@ function productionFallback(): string | undefined {
   return process.env.NODE_ENV === "production" ? PRODUCTION_ORIGIN : undefined;
 }
 
+function hasUriScheme(value: string): boolean {
+  // hostname:port is not a scheme, even though it matches scheme syntax.
+  if (/^[^/?#:]+:\d{1,5}(?:[/?#]|$)/.test(value)) return false;
+  return /^[a-z][a-z\d+.-]*:/i.test(value);
+}
+
 function parseAbsoluteHttpUrl(value: string): URL | undefined {
-  const candidates =
-    /^[a-z][a-z\d+.-]*:/i.test(value) ? [value] : [value, `https://${value}`];
+  const candidates = hasUriScheme(value) ? [value] : [value, `https://${value}`];
 
   for (const candidate of candidates) {
     try {
