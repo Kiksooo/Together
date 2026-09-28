@@ -1,8 +1,25 @@
 import type { Metadata } from "next";
 
+const PRODUCTION_ORIGIN = "https://www.together-memorial.com";
+
 export function configuredSiteUrl(): string | undefined {
   const value = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
-  return value || undefined;
+  if (!value) {
+    return process.env.NODE_ENV === "production" ? PRODUCTION_ORIGIN : undefined;
+  }
+
+  try {
+    const url = new URL(value);
+    if (
+      url.hostname === "together-memorial.com" ||
+      url.hostname === "www.together-memorial.com"
+    ) {
+      return PRODUCTION_ORIGIN;
+    }
+    return url.origin;
+  } catch {
+    return value;
+  }
 }
 
 const description =
