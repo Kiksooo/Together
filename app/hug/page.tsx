@@ -11,7 +11,7 @@ import { hugProductJsonLd, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata(
   "TOGETHER HUG — A Memorial Sculpture for Two",
-  "HUG is a memorial sculpture for two people. Two individual cremation vessels form one contemporary memorial object. The expected retail price is £895 per pair.",
+  "TOGETHER HUG is a memorial sculpture for two. Two individual cremation vessels come together as one sculptural composition. Pre-order; expected price £895 per pair.",
   "/hug",
 );
 

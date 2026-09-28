@@ -64,29 +64,79 @@ const hugImage = {
 
 export function organizationJsonLd() {
   const url = configuredSiteUrl();
+  if (!url) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "TOGETHER",
+      description,
+    };
+  }
+
+  const siteUrl = `${url}/`;
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "TOGETHER",
-    description,
-    ...(url ? { url } : {}),
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}#organization`,
+        name: "TOGETHER",
+        url: siteUrl,
+        description,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}#website`,
+        name: "TOGETHER",
+        url: siteUrl,
+        publisher: { "@id": `${siteUrl}#organization` },
+      },
+    ],
   };
 }
 
 export function hugProductJsonLd() {
   const url = configuredSiteUrl();
+  const pageUrl = url ? `${url}/hug` : undefined;
+  const descriptionText =
+    "A contemporary memorial sculpture designed for two, consisting of two individual vessels that come together as one sculptural composition.";
+
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: "HUG",
-    description:
-      "HUG is a contemporary memorial sculpture for two. Two individual cremation vessels come together as one object of remembrance. It is in development and pre-launch. The expected retail price is £895 per pair.",
-    brand: {
-      "@type": "Brand",
-      name: "TOGETHER",
-    },
-    category: "Memorial sculpture",
-    ...(url ? { url: `${url}/hug` } : {}),
+    "@graph": [
+      {
+        "@type": "Product",
+        ...(pageUrl ? { "@id": `${pageUrl}#product` } : {}),
+        name: "TOGETHER HUG",
+        description: descriptionText,
+        ...(pageUrl ? { url: pageUrl } : {}),
+        ...(url ? { image: `${url}/images/hug-assembled.png` } : {}),
+        brand: url
+          ? { "@id": `${url}/#organization` }
+          : { "@type": "Brand", name: "TOGETHER" },
+        category: "Memorial sculpture",
+        offers: {
+          "@type": "Offer",
+          ...(pageUrl ? { url: pageUrl } : {}),
+          priceCurrency: "GBP",
+          price: "895",
+          availability: "https://schema.org/PreOrder",
+        },
+      },
+      ...(pageUrl
+        ? [
+            {
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: "TOGETHER HUG — A Memorial Sculpture for Two",
+              isPartOf: { "@id": `${url}/#website` },
+              about: { "@id": `${pageUrl}#product` },
+              mainEntity: { "@id": `${pageUrl}#product` },
+            },
+          ]
+        : []),
+    ],
   };
 }
 
