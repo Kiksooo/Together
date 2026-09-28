@@ -2,24 +2,49 @@ import type { Metadata } from "next";
 
 const PRODUCTION_ORIGIN = "https://www.together-memorial.com";
 
-export function configuredSiteUrl(): string | undefined {
-  const value = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
-  if (!value) {
-    return process.env.NODE_ENV === "production" ? PRODUCTION_ORIGIN : undefined;
+const PRODUCTION_HOSTS = new Set([
+  "together-memorial.com",
+  "www.together-memorial.com",
+]);
+
+function productionFallback(): string | undefined {
+  return process.env.NODE_ENV === "production" ? PRODUCTION_ORIGIN : undefined;
+}
+
+function parseAbsoluteHttpUrl(value: string): URL | undefined {
+  const candidates =
+    /^[a-z][a-z\d+.-]*:/i.test(value) ? [value] : [value, `https://${value}`];
+
+  for (const candidate of candidates) {
+    try {
+      const url = new URL(candidate);
+      if (url.protocol !== "http:" && url.protocol !== "https:") continue;
+      if (!url.hostname) continue;
+      return url;
+    } catch {
+      continue;
+    }
   }
 
-  try {
-    const url = new URL(value);
-    if (
-      url.hostname === "together-memorial.com" ||
-      url.hostname === "www.together-memorial.com"
-    ) {
-      return PRODUCTION_ORIGIN;
-    }
-    return url.origin;
-  } catch {
-    return value;
-  }
+  return undefined;
+}
+
+export function configuredSiteUrl(): string | undefined {
+  const value = process.env.NEXT_PUBLIC_SITE_URL
+    ?.trim()
+    .replace(/^\uFEFF/, "")
+    .replace(/^['"]+|['"]+$/g, "")
+    .trim();
+
+  if (!value) return productionFallback();
+
+  const url = parseAbsoluteHttpUrl(value);
+  if (!url) return productionFallback();
+
+  const hostname = url.hostname.replace(/\.$/, "").toLowerCase();
+  if (PRODUCTION_HOSTS.has(hostname)) return PRODUCTION_ORIGIN;
+
+  return url.origin;
 }
 
 const description =
